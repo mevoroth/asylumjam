@@ -1,12 +1,12 @@
-Library/
-obj/
-Temp/
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
 UnityGenerated/
 ExportedObj/
 Assets/UnityVS
-
 Assets/UnityVS.meta
 
+*.pidb
 *.svd
 *.userprefs
 *.csproj
@@ -17,7 +17,6 @@ Assets/UnityVS.meta
 *.unityproj
 *.booproj
 *.DotSettings
-
 .DS_Store
 .DS_Store?
 ._*
@@ -26,3 +25,4 @@ Assets/UnityVS.meta
 Icon?
 ehthumbs.db
 Thumbs.db
+sysinfo.txt
