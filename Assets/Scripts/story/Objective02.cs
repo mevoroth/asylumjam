@@ -14,6 +14,7 @@ public class Objective02 : Objective
 	{
 		Command[] cmdlist = m_cmdList.GetComponentsInChildren<Command>();
 		m_view.Set(cmdlist);
+		//m_view.m_timer = 
 	}
 	public override void UpdateStates(ref bool[] STATES)
 	{

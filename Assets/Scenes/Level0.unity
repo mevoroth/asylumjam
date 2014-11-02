@@ -265,7 +265,7 @@ TextMesh:
   m_GameObject: {fileID: 142810075}
   m_Text: Where is Billy?
   m_OffsetZ: 0
-  m_CharacterSize: .400000006
+  m_CharacterSize: .25
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -406,6 +406,7 @@ MonoBehaviour:
   m_selected: 0
   m_textMesh: {fileID: 142810077}
   m_answer: Yes
+  m_once: 0
 --- !u!1 &294823725
 GameObject:
   m_ObjectHideFlags: 0
@@ -576,6 +577,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: You can't sleep Billy?
   m_wildCardFinished: 0
+  m_timer: 20
   m_cmdList: {fileID: 452882509}
   m_view: {fileID: 2123339669}
 --- !u!114 &379963033
@@ -591,6 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: Where is Billy?
   m_wildCardFinished: 0
+  m_timer: 20
   m_cameraSystem: {fileID: 1306426479}
 --- !u!114 &379963034
 MonoBehaviour:
@@ -611,6 +614,7 @@ MonoBehaviour:
   m_title: {fileID: 1196043625}
   m_answer: {fileID: 142810077}
   m_wsith: {fileID: 962971649}
+  m_cmdListObj: {fileID: 2123339669}
   m_objective: 0
 --- !u!4 &379963035
 Transform:
@@ -640,6 +644,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: "Somebody is in the kitchen!\r\nI have to help Billy!"
   m_wildCardFinished: 0
+  m_timer: 20
   m_cmdList: {fileID: 1735759412}
   m_view: {fileID: 2123339669}
 --- !u!114 &379963037
@@ -655,6 +660,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_title: "Maybe it was nothing\r\nI'm so worried\r\nIf only I could leave the office..."
   m_wildCardFinished: 0
+  m_timer: 20
   m_cmdList: {fileID: 0}
   m_view: {fileID: 0}
 --- !u!1 &404407036
@@ -1129,6 +1135,64 @@ MeshFilter:
   m_PrefabInternal: {fileID: 980306602}
   m_GameObject: {fileID: 603560847}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &608016874
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+  m_PrefabInternal: {fileID: 848822704}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 608016875}
+  - 33: {fileID: 608016877}
+  - 23: {fileID: 608016876}
+  m_Layer: 0
+  m_Name: livre
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &608016875
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+  m_PrefabInternal: {fileID: 848822704}
+  m_GameObject: {fileID: 608016874}
+  m_LocalRotation: {x: 2.01920294e-08, y: .382683367, z: -8.36381009e-09, w: .923879564}
+  m_LocalPosition: {x: -1000, y: -1000, z: -1000}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1395300261}
+  m_RootOrder: 7
+--- !u!23 &608016876
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 2300000, guid: f9b97a93e3a4708418a6cb09ba2ddc10,
+    type: 3}
+  m_PrefabInternal: {fileID: 848822704}
+  m_GameObject: {fileID: 608016874}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: bc2cf65bb054cb24e8f6171e10e77ae0, type: 2}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+--- !u!33 &608016877
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 3300000, guid: f9b97a93e3a4708418a6cb09ba2ddc10,
+    type: 3}
+  m_PrefabInternal: {fileID: 848822704}
+  m_GameObject: {fileID: 608016874}
+  m_Mesh: {fileID: 4300000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
 --- !u!1 &610945571
 GameObject:
   m_ObjectHideFlags: 0
@@ -1229,6 +1293,7 @@ MonoBehaviour:
   m_command: Take your teddy bear
   m_selected: 0
   m_teddyBear: {fileID: 1970494482}
+  m_once: 0
 --- !u!1 &634117665
 GameObject:
   m_ObjectHideFlags: 0
@@ -1715,6 +1780,50 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: .0219999999
+--- !u!1001 &848822704
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1395300261}
+    m_Modifications:
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 2.01920294e-08
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: .382683367
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -8.36381009e-09
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: .923879564
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: f9b97a93e3a4708418a6cb09ba2ddc10, type: 3}
+  m_RootGameObject: {fileID: 608016874}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &850470567
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,6 +2170,7 @@ MonoBehaviour:
   m_selected: 0
   m_textMesh: {fileID: 142810077}
   m_answer: Yes
+  m_once: 0
 --- !u!1001 &980306602
 Prefab:
   m_ObjectHideFlags: 0
@@ -2564,7 +2674,7 @@ TextMesh:
   m_GameObject: {fileID: 1196043623}
   m_Text: Where is Billy?
   m_OffsetZ: 0
-  m_CharacterSize: .699999988
+  m_CharacterSize: .400000006
   m_LineSpacing: 1
   m_Anchor: 0
   m_Alignment: 0
@@ -3108,6 +3218,7 @@ MonoBehaviour:
   m_command: Switch off the light
   m_selected: 0
   m_light: {fileID: 2116976200}
+  m_once: 0
 --- !u!1 &1395300260
 GameObject:
   m_ObjectHideFlags: 0
@@ -3140,6 +3251,7 @@ Transform:
   - {fileID: 800797751}
   - {fileID: 194980394}
   - {fileID: 1127267358}
+  - {fileID: 608016875}
   m_Father: {fileID: 981029387}
   m_RootOrder: 0
 --- !u!1 &1404106784
@@ -3789,6 +3901,7 @@ MonoBehaviour:
   m_command: Where I am?
   m_selected: 0
   m_textMesh: {fileID: 142810077}
+  m_once: 0
 --- !u!1 &1735759412
 GameObject:
   m_ObjectHideFlags: 0
@@ -4937,6 +5050,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_command: Read a book
   m_selected: 0
+  m_once: 0
 --- !u!1 &1970494482
 GameObject:
   m_ObjectHideFlags: 0
@@ -5397,7 +5511,7 @@ MonoBehaviour:
   m_commandList: []
   m_timer: 5
   m_pattern: {fileID: 850470567}
-  m_state: 3
+  m_state: 4
   m_selectedAnswers: {fileID: 1646766457}
   m_selectedCount: 0
   m_realCount: 0

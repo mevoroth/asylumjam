@@ -14,6 +14,7 @@ public abstract class Objective : MonoBehaviour
 		get { return m_wildCardFinished; }
 		set { m_wildCardFinished = value; }
 	}
+	public float m_timer = 20f;
 	public abstract bool IsFinished();
 	public abstract void Init();
 

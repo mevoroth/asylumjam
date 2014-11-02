@@ -36,7 +36,6 @@ public class CommandList : MonoBehaviour
 		switch (m_state)
 		{
 			case State.BEGIN:
-				m_timer = MAX_TIMER;
 				m_selectedAnswers.gameObject.SetActive(true);
 				m_state = State.CHOOSE; // NEED TEMPO ?
 				break;
@@ -117,26 +116,57 @@ public class CommandList : MonoBehaviour
 		// ADD TIMER!!!
 	}
 
-	public void Set(Command[] cmdlist)
+	IEnumerator ShowCommands(Command[] cmdlist)
 	{
-		for (int i = 0; i < transform.childCount; ++ i)
-		{
-			Destroy(transform.GetChild(i).gameObject);
-		}
 		for (int i = 0; i < cmdlist.Length; ++i)
 		{
 			GameObject slot = (GameObject)Instantiate(m_pattern);
 			slot.transform.parent = transform;
 			m_commandList.Add(cmdlist[i]);
 			slot.GetComponent<TextMesh>().text = cmdlist[i].m_command;
+			slot.GetComponent<TextMesh>().color = new Color(
+				slot.GetComponent<TextMesh>().color.r,
+				slot.GetComponent<TextMesh>().color.g,
+				slot.GetComponent<TextMesh>().color.b,
+				0f
+			);
 			Selector sel = slot.AddComponent<Selector>();
 			sel.m_cmd = cmdlist[i];
 			slot.transform.localPosition = new Vector3(
 				-8f, 3.5f - 1f * i, 0.5f
 			);
 			slot.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
+			slot.collider.enabled = false;
 
 			m_state = State.BEGIN;
 		}
+		for (float t = 0; t < 1f; t += 0.05f)
+		{
+			for (int i = 0; i < transform.childCount; ++i)
+			{
+				Color c = transform.GetChild(i).GetComponent<TextMesh>().color;
+				transform.GetChild(i).GetComponent<TextMesh>().color = new Color(
+					c.r, c.g, c.b, t
+				);
+			}
+			yield return new WaitForSeconds(0.05f);
+		}
+		for (int i = 0; i < transform.childCount; ++i)
+		{
+			Color c = transform.GetChild(i).GetComponent<TextMesh>().color;
+			transform.GetChild(i).GetComponent<TextMesh>().color = new Color(
+				c.r, c.g, c.b, 1f
+			);
+			transform.GetChild(i).collider.enabled = true;
+		}
+	}
+
+	public void Set(Command[] cmdlist)
+	{
+		for (int i = 0; i < transform.childCount; ++ i)
+		{
+			Destroy(transform.GetChild(i).gameObject);
+		}
+		StartCoroutine("ShowCommands", cmdlist);
 	}
 }

@@ -8,6 +8,7 @@ public class ObjectiveMgr : MonoBehaviour
 	public TextMesh m_title;
 	public TextMesh m_answer;
 	public GameObject m_wsith;
+	public CommandList m_cmdListObj;
 	public int m_objective = 0;
 
 	public enum Scene
@@ -33,6 +34,8 @@ public class ObjectiveMgr : MonoBehaviour
 
 	IEnumerator AnimateHUD()
 	{
+		m_wsith.SetActive(false);
+		m_answer.text = "";
 		m_objectives[m_objective].UpdateStates(ref STATES);
 		++m_objective;
 		for (float i = 0f; i < 1f; i += 0.05f)
@@ -45,6 +48,13 @@ public class ObjectiveMgr : MonoBehaviour
 			);
 			yield return new WaitForSeconds(0.05f);
 		}
+		m_title.color = new Color(
+			m_title.color.r,
+			m_title.color.g,
+			m_title.color.b,
+			0f
+		);
+		yield return new WaitForSeconds(1f);
 		m_title.text = m_objectives[m_objective].Title;
 		for (float i = 0f; i < 1f; i += 0.05f)
 		{
@@ -57,7 +67,7 @@ public class ObjectiveMgr : MonoBehaviour
 			yield return new WaitForSeconds(0.05f);
 		}
 		m_objectives[m_objective].Init();
-		m_answer.text = "";
+		m_cmdListObj.m_timer = m_objectives[m_objective].m_timer;
 		m_wsith.SetActive(true);
 		yield return null;
 	}
