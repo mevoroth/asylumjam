@@ -1,14 +1,22 @@
 fileFormatVersion: 2
-guid: f4a36724519dee2408491d1c47c406f7
+guid: 07e12c941a4f2d04d8f2393226119af7
 ModelImporter:
   serializedVersion: 16
   fileIDToRecycleName:
-    100000: //RootNode
-    400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: mur
+    100000: Bone001
+    100002: Bone002
+    100004: Bone003
+    100006: //RootNode
+    100008: Cylinder005
+    400000: Bone001
+    400002: Bone002
+    400004: Bone003
+    400006: //RootNode
+    400008: Cylinder005
+    4300000: Cylinder005
     9500000: //RootNode
+    11100000: //RootNode
+    13700000: Cylinder005
   materials:
     importMaterials: 1
     materialName: 0
@@ -45,7 +53,7 @@ ModelImporter:
     normalSmoothAngle: 60
     splitTangentsAcrossUV: 1
     normalImportMode: 0
-    tangentImportMode: 0
+    tangentImportMode: 1
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
@@ -60,6 +68,6 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 1
   additionalBone: 0
   userData: 

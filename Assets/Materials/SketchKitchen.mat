@@ -6,8 +6,8 @@ Material:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: No Name
-  m_Shader: {fileID: 4800000, guid: 9493cd3e2fb72c149b2823327518f023, type: 3}
+  m_Name: SketchKitchen
+  m_Shader: {fileID: 4800000, guid: 75173a3b05c70de4bad0e0a5a67b0c35, type: 3}
   m_ShaderKeywords: []
   m_CustomRenderQueue: -1
   m_SavedProperties:
