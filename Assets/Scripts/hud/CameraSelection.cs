@@ -7,7 +7,7 @@ public class CameraSelection : MonoBehaviour {
 
 	public void OnMouseDown()
 	{
-		Debug.Log("TOPLEL!CAM" + m_camId);
+		// SCRIPTER CAM
 		m_camSystem.SetCurrent(m_camId);
 	}
 }

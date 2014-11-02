@@ -1,14 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class O02SwitchOffTheLight : Command
+public class O03SwitchOnTheLight : Command
 {
 	public Light m_light;
 
 	public override void Execute()
 	{
-		// Switch off
-		m_light.enabled = false;
-		SetFinished();
+		m_light.enabled = true;
 	}
 }

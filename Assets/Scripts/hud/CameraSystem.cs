@@ -14,12 +14,6 @@ public class CameraSystem : MonoBehaviour
 	public Rect m_subCams = new Rect(0.75f, 0.75f, 0.2f, 0.2f);
 	public float m_step = 0.25f;
 
-	// Use this for initialization
-	void Start ()
-	{
-		
-	}
-	
 	// Update is called once per frame
 	void Update ()
 	{
@@ -50,5 +44,10 @@ public class CameraSystem : MonoBehaviour
 			return;
 		}
 		m_current = newVal;
+	}
+
+	public void AbsoluteSetCurrent(int current)
+	{
+		m_current = current;
 	}
 }

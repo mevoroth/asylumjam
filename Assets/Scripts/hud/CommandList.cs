@@ -8,18 +8,25 @@ public class CommandList : MonoBehaviour
 	public const float MAX_TIMER = 5f;
 	public GameObject m_hudCamera;
 	public List<Command> m_commandList;
+
 	public float m_timer = MAX_TIMER;
 
 	public GameObject m_pattern;
 	public State m_state = State.IDLE;
 	
 	public TextMesh m_selectedAnswers;
+	public int m_selectedCount = 0;
+	public int m_realCount = 0;
+	List<Command> m_selectedCmds = new List<Command>();
+
+	public ObjectiveMgr m_objMgr;
 
 	public enum State
 	{
 		BEGIN,
 		CHOOSE,
 		END,
+		NO_ACTION,
 		IDLE
 	}
 
@@ -36,9 +43,15 @@ public class CommandList : MonoBehaviour
 			case State.CHOOSE:
 				m_timer -= Time.deltaTime;
 				int count = 0;
+
+				m_selectedCmds.Clear();
 				for (int i = 0; i < m_commandList.Count; ++i)
 				{
-					count += (m_commandList[i].m_selected ? 1 : 0);
+					if (m_commandList[i].m_selected)
+					{
+						m_selectedCmds.Add(m_commandList[i]);
+						++count;
+					}
 					if (count == MAX_COMMANDS)
 					{
 						break;
@@ -55,20 +68,42 @@ public class CommandList : MonoBehaviour
 					{
 						commands[i].enabled = false;
 					}
+					m_selectedCount = 0;
+
+					if (count == 0)
+					{
+						m_state = State.NO_ACTION;
+						return;
+					}
+
+					m_realCount = count;
 					m_state = State.END;
 				}
 				break;
-			case State.END:
-				int selectedCount = 0;
-				for (int i = 0; i < m_commandList.Count; ++i)
-				{
-					if (m_commandList[i].m_selected)
-					{
-						m_commandList[i].Execute();
-						++selectedCount;
-					}
-				}
+			case State.NO_ACTION:
 				m_state = State.IDLE;
+				break;
+			case State.END:
+				// A CHANGER
+				m_selectedCmds[m_selectedCount].Execute();
+				if (m_selectedCmds[m_selectedCount].IsFinished())
+				{
+					++m_selectedCount;
+				}
+				//for (int i = 0; i < m_commandList.Count; ++i)
+				//{
+				//	if (m_commandList[i].m_selected)
+				//	{
+				//		m_commandList[i].Execute();
+				//		++selectedCount;
+				//	}
+				//}
+
+				if (m_selectedCount >= m_realCount)
+				{
+					m_state = State.IDLE;
+					m_objMgr.SetFinished();
+				}
 				break;
 			case State.IDLE:
 				m_selectedAnswers.gameObject.SetActive(false);
