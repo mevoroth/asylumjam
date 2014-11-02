@@ -14,6 +14,7 @@ public class Objective03 : Objective
 	public override void Init()
 	{
 		// SCRIPTING BIATCH !
+
 		Command[] cmdlist = m_cmdList.GetComponentsInChildren<Command>();
 		m_view.Set(cmdlist);
 	}

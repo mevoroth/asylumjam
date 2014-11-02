@@ -9,6 +9,13 @@ public class O02Talk : Command
 
 	IEnumerator ShowText()
 	{
+		m_textMesh.text = m_answer;
+		m_textMesh.color = new Color(
+			m_textMesh.color.r,
+			m_textMesh.color.g,
+			m_textMesh.color.b,
+			0f
+		);
 		for (float i = 0f; i < 1f; i += 0.05f)
 		{
 			m_textMesh.color = new Color(
@@ -36,13 +43,6 @@ public class O02Talk : Command
 			return;
 		}
 		m_once = true;
-		m_textMesh.text = m_answer;
-		m_textMesh.color = new Color(
-			m_textMesh.color.r,
-			m_textMesh.color.g,
-			m_textMesh.color.b,
-			0f
-		);
 		StartCoroutine("ShowText");
 	}
 }
