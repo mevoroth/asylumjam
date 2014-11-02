@@ -19,6 +19,10 @@ public class CameraSystem : MonoBehaviour
 	{
 		m_cameras[m_current].rect = m_mainCam;
 		m_cameras[m_current].depth = MAIN_CAM_LAYER;
+		if (!m_cameras[m_current].gameObject.GetComponent<AudioListener>())
+		{
+			m_cameras[m_current].gameObject.AddComponent<AudioListener>();
+		}
 
 		for (int i = 0, camCount = 0; i < m_cameras.Count; ++i)
 		{
@@ -31,6 +35,10 @@ public class CameraSystem : MonoBehaviour
 					m_subCams.height
 				);
 				m_cameras[i].depth = SUB_CAM_LAYER;
+				if (m_cameras[i].gameObject.GetComponent<AudioListener>())
+				{
+					Destroy(m_cameras[i].gameObject.GetComponent<AudioListener>());
+				}
 				++camCount;
 			}
 		}

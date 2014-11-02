@@ -27,6 +27,10 @@ public class Billy : MonoBehaviour
 	public GameObject m_room2Alarm;
 	public GameObject m_room2Window;
 
+	public Animator m_animator;
+
+	public Vector2 m_dest;
+
 	public enum Location
 	{
 		ROOM1,
@@ -37,10 +41,17 @@ public class Billy : MonoBehaviour
 	public void Awake()
 	{
 		m_billy = GetComponent<NavMeshAgent>();
+		m_animator = GetComponentInChildren<Animator>();
 	}
 	public void MoveToTeddyBear()
 	{
 		m_billy.SetDestination(m_teddyBear.transform.position);
+		m_dest = new Vector2(
+			m_teddyBear.transform.position.x,
+			m_teddyBear.transform.position.z
+		);
+		Debug.Log("MoveToTeddyBear");
+		m_animator.SetBool("Walking", true);
 	}
 
 	public void MoveToRoom1()
@@ -134,10 +145,22 @@ public class Billy : MonoBehaviour
 
 	public bool Reached()
 	{
-		return m_billy.remainingDistance <= float.Epsilon;
+		bool reached = Vector2.Distance(
+			m_dest,
+			new Vector2(
+				transform.position.x,
+				transform.position.z
+			)
+		) <= 0.001f;
+		m_animator.SetBool("Walking", !reached);
+		return reached;
 	}
 	public bool ReachedRoom2()
 	{
 		return m_loc == Location.ROOM2;
+	}
+	public void SetToIdle()
+	{
+		m_animator.SetBool("Walking", false);
 	}
 }

@@ -1439,7 +1439,7 @@ MonoBehaviour:
   upperArm: {fileID: 1304223304}
   forearm: {fileID: 2076309857}
   hand: {fileID: 1239076356}
-  target: {fileID: 2002840120}
+  target: {fileID: 0}
   elbowTarget: {fileID: 565892237}
   IsEnabled: 1
   debug: 1
@@ -3070,7 +3070,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 565892237}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: elbow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3082,12 +3082,12 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 565892236}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.6999226, y: 1.43404841, z: 5.68060493}
+  m_LocalRotation: {x: 0, y: -1, z: 0, w: -4.37113883e-08}
+  m_LocalPosition: {x: -.315368593, y: .0348620415, z: -.723406792}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 2031065921}
+  m_RootOrder: 1
 --- !u!1 &577530518
 GameObject:
   m_ObjectHideFlags: 0
@@ -11330,7 +11330,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1797619357}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25.6040688, y: 0, z: 6.13868093}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2031065921}
@@ -11365,6 +11365,8 @@ MonoBehaviour:
   m_room2Door1Obj: {fileID: 207798164}
   m_room2Alarm: {fileID: 1980149561}
   m_room2Window: {fileID: 855318370}
+  m_animator: {fileID: 0}
+  m_dest: {x: 0, y: 0}
 --- !u!195 &1797619360
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -11373,7 +11375,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 1797619357}
   m_Enabled: 1
   m_Radius: .100000001
-  m_Speed: 3.5
+  m_Speed: .899999976
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -13626,10 +13628,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2031065920}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: -4.37113883e-08}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -.400000006, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1150234477}
+  - {fileID: 565892237}
   m_Father: {fileID: 1797619358}
   m_RootOrder: 0
 --- !u!1 &2034119765

@@ -9,12 +9,13 @@ public class O02TakeYourTeddyBear : Command
 
 	IEnumerator GetTeddy()
 	{
+		// Take the teddy bear
 		Billy billy = m_billy.GetComponent<Billy>();
+		billy.MoveToTeddyBear();
 		while (!billy.Reached())
 		{
 			yield return new WaitForSeconds(0.05f);
 		}
-		Debug.Log("test");
 		m_teddyBear.transform.parent = m_billy.transform;
 		SetFinished();
 		yield return null;
@@ -32,8 +33,6 @@ public class O02TakeYourTeddyBear : Command
 			return;
 		}
 		m_once = true;
-		// Take the teddy bear
-		m_billy.GetComponent<Billy>().MoveToTeddyBear();
 		StartCoroutine("GetTeddy");
 	}
 }
