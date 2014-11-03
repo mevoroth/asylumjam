@@ -17,6 +17,10 @@ public class O02TakeYourTeddyBear : Command
 			yield return new WaitForSeconds(0.05f);
 		}
 		m_teddyBear.transform.parent = m_billy.transform;
+		// HARDCODE
+		m_teddyBear.transform.localPosition = new Vector3(0.3354758f, -0.2346303f, -0.06463978f);
+		m_teddyBear.transform.localEulerAngles = new Vector3(-90f, -157.3f, 0f);
+		m_teddyBear.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
 		SetFinished();
 		yield return null;
 	}

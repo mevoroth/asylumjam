@@ -69,6 +69,8 @@ public class ObjectiveMgr : MonoBehaviour
 		m_objectives[m_objective].Init();
 		m_cmdListObj.m_timer = m_objectives[m_objective].m_timer;
 		m_wsith.SetActive(true);
+		Debug.Log("test");
+		m_cmdListObj.m_state = CommandList.State.BEGIN;
 		yield return null;
 	}
 

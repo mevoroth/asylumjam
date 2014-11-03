@@ -5,7 +5,7 @@ public class O03CallMummy : Command
 {
 	private GameObject m_billy;
 	public bool m_once = false;
-
+	public GameObject m_phone;
 	IEnumerator DoAction()
 	{
 		Billy billy = m_billy.GetComponent<Billy>();

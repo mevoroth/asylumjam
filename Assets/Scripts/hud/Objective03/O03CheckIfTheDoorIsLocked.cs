@@ -15,12 +15,18 @@ public class O03CheckIfTheDoorIsLocked : Command
 	IEnumerator DoAction()
 	{
 		Billy billy = m_billy.GetComponent<Billy>();
+		billy.MoveToRoom2();
 		while (!billy.ReachedRoom2())
 		{
 			yield return new WaitForSeconds(0.05f);
 		}
 
 		// OPEN THEN CLOSE DOOR
+		billy.OpenCloseDoor();
+		while (!billy.OpenCloseDoorFinished())
+		{
+			yield return new WaitForSeconds(0.05f);
+		}
 		SetFinished();
 	}
 
@@ -31,7 +37,6 @@ public class O03CheckIfTheDoorIsLocked : Command
 			return;
 		}
 		m_once = true;
-		m_billy.GetComponent<Billy>().MoveToRoom2();
 		StartCoroutine("DoAction");
 	}
 }

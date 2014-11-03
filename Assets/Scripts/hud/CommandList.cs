@@ -10,6 +10,7 @@ public class CommandList : MonoBehaviour
 	public List<Command> m_commandList;
 
 	public float m_timer = MAX_TIMER;
+	public TextMesh m_title;
 
 	public GameObject m_pattern;
 	public State m_state = State.IDLE;
@@ -71,6 +72,7 @@ public class CommandList : MonoBehaviour
 
 					if (count == 0)
 					{
+						Debug.Log("NO_ACTION");
 						m_state = State.NO_ACTION;
 						return;
 					}
@@ -83,7 +85,7 @@ public class CommandList : MonoBehaviour
 				m_state = State.IDLE;
 				break;
 			case State.END:
-				// A CHANGER
+				m_title.text = m_selectedCmds[m_selectedCount].m_command;
 				m_selectedCmds[m_selectedCount].Execute();
 				if (m_selectedCmds[m_selectedCount].IsFinished())
 				{
@@ -118,6 +120,7 @@ public class CommandList : MonoBehaviour
 
 	IEnumerator ShowCommands(Command[] cmdlist)
 	{
+		m_commandList.Clear();
 		for (int i = 0; i < cmdlist.Length; ++i)
 		{
 			GameObject slot = (GameObject)Instantiate(m_pattern);

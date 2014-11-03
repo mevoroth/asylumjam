@@ -16,6 +16,7 @@ public class Objective03 : Objective
 		// SCRIPTING BIATCH !
 
 		Command[] cmdlist = m_cmdList.GetComponentsInChildren<Command>();
+		Debug.Log("test : " + cmdlist.Length);
 		m_view.Set(cmdlist);
 	}
 	public override void UpdateStates(ref bool[] STATES)

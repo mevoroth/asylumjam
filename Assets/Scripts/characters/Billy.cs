@@ -61,7 +61,12 @@ public class Billy : MonoBehaviour
 
 	IEnumerator MoveToRoom2Corout()
 	{
-		m_billy.SetDestination(m_room1.transform.position);
+		m_billy.SetDestination(m_room1Door.transform.position);
+		m_dest = new Vector2(
+			m_room1Door.transform.position.x,
+			m_room1Door.transform.position.z
+		);
+		m_animator.SetBool("Walking", true);
 		while (!Reached())
 		{
 			yield return new WaitForSeconds(0.05f);
@@ -72,17 +77,29 @@ public class Billy : MonoBehaviour
 			yield return new WaitForSeconds(0.05f);
 		}
 		m_billy.SetDestination(m_room1Warp.transform.position);
+		m_dest = new Vector2(
+			m_room1Warp.transform.position.x,
+			m_room1Warp.transform.position.z
+		);
 		while (!Reached())
 		{
 			yield return new WaitForSeconds(0.05f);
 		}
 		m_billy.Warp(m_room2Warp0.transform.position);
+		m_dest = new Vector2(
+			m_room2Warp0.transform.position.x,
+			m_room2Warp0.transform.position.z
+		);
 		m_room2Door0Obj.Open();
 		while (!m_room2Door0Obj.Finished())
 		{
 			yield return new WaitForSeconds(0.05f);
 		}
 		m_billy.SetDestination(m_room2Door0.transform.position);
+		m_dest = new Vector2(
+			m_room2Door0.transform.position.x,
+			m_room2Door0.transform.position.z
+		);
 		while (!Reached())
 		{
 			yield return new WaitForSeconds(0.05f);
@@ -97,6 +114,7 @@ public class Billy : MonoBehaviour
 
 	public void MoveToRoom2()
 	{
+		Debug.Log("MOVE ROOM2");
 		if (m_loc != Location.ROOM2)
 		{
 			StartCoroutine("MoveToRoom2Corout");
@@ -158,6 +176,34 @@ public class Billy : MonoBehaviour
 	public bool ReachedRoom2()
 	{
 		return m_loc == Location.ROOM2;
+	}
+	bool m_openclosefinished = false;
+	public bool OpenCloseDoorFinished()
+	{
+		return m_openclosefinished;
+	}
+	IEnumerator OpenCloseDoorCorout()
+	{
+		m_billy.SetDestination(m_room2Door0.transform.position);
+		m_dest = new Vector2(
+			m_room2Door0.transform.position.x,
+			m_room2Door0.transform.position.z
+		);
+		while (!Reached())
+		{
+			yield return new WaitForSeconds(0.05f);
+		}
+		m_room2Door0Obj.Close();
+		while (!m_room2Door0Obj.Finished())
+		{
+			yield return new WaitForSeconds(0.05f);
+		}
+		m_openclosefinished = true;
+	}
+	public void OpenCloseDoor()
+	{
+		m_openclosefinished = false;
+		StartCoroutine("OpenCloseDoorCorout");
 	}
 	public void SetToIdle()
 	{
