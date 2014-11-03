@@ -16,7 +16,13 @@ public class O03CallMummy : Command
 		}
 
 		// PICKUP PHONE
-		//billy.MoveToPhone();
+		billy.MoveToPhone();
+
+		while (!billy.Reached())
+		{
+			yield return new WaitForSeconds(0.05f);
+		}
+
 		SetFinished();
 	}
 

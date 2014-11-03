@@ -26,6 +26,7 @@ public class Billy : MonoBehaviour
 
 	public GameObject m_room2Alarm;
 	public GameObject m_room2Window;
+	public GameObject m_phone;
 
 	public Animator m_animator;
 
@@ -57,6 +58,16 @@ public class Billy : MonoBehaviour
 	public void MoveToRoom1()
 	{
 		
+	}
+
+	public void MoveToPhone()
+	{
+		m_billy.SetDestination(m_phone.transform.position);
+		m_dest = new Vector2(
+			m_phone.transform.position.x,
+			m_phone.transform.position.z
+		);
+		m_animator.SetBool("Walking", true);
 	}
 
 	IEnumerator MoveToRoom2Corout()
